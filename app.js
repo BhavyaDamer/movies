@@ -82,7 +82,7 @@ app.post("/movies/", async (request, response) => {
   response.send("Movie Successfully Added");
 });
 
-app.put("/movies/:movieId", async (request, response) => {
+app.put("/movies/:movieId/", async (request, response) => {
   const { movieId } = request.params;
   const { directorId, movieName, leadActor } = request.body;
   const updateMovieQuery = `
@@ -98,7 +98,7 @@ app.put("/movies/:movieId", async (request, response) => {
   response.send("Movie Details Updated");
 });
 
-app.delete("/movies/:movieId", async (request, response) => {
+app.delete("/movies/:movieId/", async (request, response) => {
   const { movieId } = request.params;
   const deleteMovieQuery = `
     DELETE FROM
@@ -134,7 +134,7 @@ app.get("/directors/:directorId/movies/", async (request, response) => {
   const movies = await database.all(getDirectorMovieQuery);
   response.send(
     movies.map((movieName) =>
-      convertDirectorDbObjectToResponseObject(movieName)
+      convertMovieDBObjectToResponseObject(movieName)
     )
   );
 });
