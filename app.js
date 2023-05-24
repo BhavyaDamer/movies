@@ -139,4 +139,4 @@ app.get("/directors/:directorId/movies/", async (request, response) => {
   );
 });
 
-module.export = app;
+module.exports = app;
